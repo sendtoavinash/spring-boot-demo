@@ -36,8 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService{
                 .stream()
                 .filter(employee -> employee.getEmployeeId().equalsIgnoreCase(id))
                 .findFirst()
-                .orElseThrow(() -> new EmployeeNotFoundException("" +
-                        "Employee not found with Id: " + id));
+                .orElseThrow(() -> new EmployeeNotFoundException("" + "Employee not found with Id: " + id));
     }
 
     @Override
