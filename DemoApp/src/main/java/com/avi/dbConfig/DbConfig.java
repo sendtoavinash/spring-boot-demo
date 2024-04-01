@@ -1,4 +1,4 @@
-package com.parivesh.dbConfig;
+package com.avi.dbConfig;
 
 
 import java.security.InvalidKeyException;
@@ -22,11 +22,11 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.parivesh.util.RSAUtil;
+import com.avi.util.RSAUtil;
 import com.google.common.base.Preconditions;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.parivesh.repository", entityManagerFactoryRef = "postgresEntityManager", transactionManagerRef = "postgresTransactionManager")
+@EnableJpaRepositories(basePackages = "com.avi.repository", entityManagerFactoryRef = "postgresEntityManager", transactionManagerRef = "postgresTransactionManager")
 public class DbConfig {
 
 	@Autowired
@@ -41,14 +41,14 @@ public class DbConfig {
 	public LocalContainerEntityManagerFactoryBean postgresEntityManager() {
 		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(postgresDataSource());
-		em.setPackagesToScan("com.parivesh.model");
+		em.setPackagesToScan("com.avi.model");
 
 		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		final HashMap<String, Object> properties = new HashMap<String, Object>();
 		properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.ddl-auto"));
 		properties.put("hibernate.dialect", env.getProperty("postgres.hibernate.dialect"));
-		properties.put("org.hibernate.envers.audit_table_suffix", "_aud");;
+		properties.put("org.hibernate.envers.audit_table_suffix", "_aud");
 		properties.put("hibernate.listeners.envers.autoRegister", true);
 		properties.put("hibernate.envers.autoRegisterListeners", true);
 		em.setJpaPropertyMap(properties);

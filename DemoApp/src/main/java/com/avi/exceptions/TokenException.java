@@ -1,4 +1,4 @@
-package com.parivesh.exceptions;
+package com.avi.exceptions;
 
 public class TokenException extends RuntimeException {
 

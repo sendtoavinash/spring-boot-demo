@@ -1,4 +1,4 @@
-package com.parivesh.util;
+package com.avi.util;
 
 import java.security.SecureRandom;
 
